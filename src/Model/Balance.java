@@ -26,7 +26,7 @@ public class Balance {
     }
 
     public static void removeBalance() {
-        String sql = "UPDATE customers1 SET customer_balance = customer_balance + ? WHERE customer_id = ?";
+        String sql = "UPDATE customers1 SET customer_balance = customer_balance - ? WHERE customer_id = ?";
         Scanner sc = new Scanner(System.in);
 
         try (Connection conn = DatabaseConnection.getConnection();
