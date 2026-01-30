@@ -28,7 +28,6 @@ public class Sales {
         try (Connection conn = DatabaseConnection.getConnection()) {
             conn.setAutoCommit(false);
 
-            // Проверка artwork
             PreparedStatement psArt = conn.prepareStatement(checkArt);
             psArt.setInt(1, artId);
             ResultSet artRs = psArt.executeQuery();
@@ -45,7 +44,6 @@ public class Sales {
 
             double price = artRs.getDouble("art_price");
 
-            // Проверка клиента
             PreparedStatement psCust = conn.prepareStatement(checkCustomer);
             psCust.setInt(1, customerId);
             ResultSet custRs = psCust.executeQuery();
@@ -62,18 +60,15 @@ public class Sales {
                 return;
             }
 
-            // Обновляем статус арта
             PreparedStatement psUpdateArt = conn.prepareStatement(updateArt);
             psUpdateArt.setInt(1, artId);
             psUpdateArt.executeUpdate();
 
-            // Списываем баланс
             PreparedStatement psUpdateCust = conn.prepareStatement(updateCustomer);
             psUpdateCust.setDouble(1, price);
             psUpdateCust.setInt(2, customerId);
             psUpdateCust.executeUpdate();
 
-            // Добавляем продажу
             PreparedStatement psSale = conn.prepareStatement(insertSale);
             psSale.setInt(1, (int) (Math.random() * 100000));
             psSale.setInt(2, artId);
