@@ -1,4 +1,5 @@
 package Model;
+import Exceptions.ResourceNotFoundException;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class Arts {
             }
 
             if (!found) {
-                System.out.println("Arts not found");
+                throw new ResourceNotFoundException("Arts not found");
             }
 
         } catch (SQLException e) {
