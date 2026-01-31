@@ -1,5 +1,6 @@
 package Model;
 
+import Exceptions.ResourceNotFoundException;
 import java.sql.*;
 import java.util.Scanner;
 
