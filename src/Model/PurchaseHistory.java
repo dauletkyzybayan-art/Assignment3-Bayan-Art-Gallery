@@ -1,5 +1,6 @@
 package Model;
 
+import Exceptions.ResourceNotFoundException;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -38,7 +39,7 @@ public class PurchaseHistory {
             }
 
             if (!found) {
-                System.out.println("No purchases found");
+                throw new ResourceNotFoundException("No purchases found");
             }
 
         } catch (SQLException e) {
