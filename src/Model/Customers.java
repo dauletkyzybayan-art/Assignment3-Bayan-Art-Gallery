@@ -29,7 +29,7 @@ public class Customers {
             }
 
             if (!found) {
-                System.out.println("Customer not found");
+                throw new ResourceNotFoundException("Customer not found");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
