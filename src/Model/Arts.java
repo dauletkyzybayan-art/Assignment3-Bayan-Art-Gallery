@@ -58,7 +58,7 @@ public class Arts {
                         "\nCreated in: " + artDate + "\nAuthor: "  + artAuthor);
             }
             if (!found) {
-                System.out.println("Art not found");
+                throw new ResourceNotFoundException("Art not found");
             }
         }  catch (SQLException e) {
             e.printStackTrace();
