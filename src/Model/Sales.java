@@ -1,5 +1,6 @@
 package Model;
 
+import Exceptions.ResourceNotFoundException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -33,7 +34,7 @@ public class Sales {
             ResultSet artRs = psArt.executeQuery();
 
             if (!artRs.next()) {
-                System.out.println("Art not found");
+                throw new ResourceNotFoundException("Art not found");
                 return;
             }
 
@@ -49,7 +50,7 @@ public class Sales {
             ResultSet custRs = psCust.executeQuery();
 
             if (!custRs.next()) {
-                System.out.println("Customer not found");
+                throw new ResourceNotFoundException("Customer not found");
                 return;
             }
 
